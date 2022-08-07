@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220804140148) do
+ActiveRecord::Schema.define(version: 20220807143257) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -24,6 +29,11 @@ ActiveRecord::Schema.define(version: 20220804140148) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -32,8 +42,19 @@ ActiveRecord::Schema.define(version: 20220804140148) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "is_deleted"
     t.index ["email"], name: "index_customers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "favorits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
