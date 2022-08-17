@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 20220807143257) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +42,6 @@ ActiveRecord::Schema.define(version: 20220807143257) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "is_deleted"
     t.index ["email"], name: "index_customers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
   end
